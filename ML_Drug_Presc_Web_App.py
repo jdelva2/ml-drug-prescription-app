@@ -1,7 +1,7 @@
 from flask import Flask
 
 import pickle
-from flask import request, jsonify
+from flask import request, jsonify,render_template,flash
 
 app =Flask(__name__)
 
@@ -25,11 +25,11 @@ def predict_drug(Age,Sex,BP,Cholesterol,Na_to_K):
     #4 Return the "raw" version of the prediction i.e the actual name of the drug rather than the numerical encoded version
     return drug_map[y_predict]
 
-@app.route("https://ml-drug-prescription-app.herokuapp.com/")
+@app.route("/")
 def hello():
     return "A test web service for accessing a machine learning model to make drug reccommendations v2."
 
-@app.route('https://ml-drug-prescription-app.herokuapp.com/drug', methods = ['GET'])
+@app.route('/drug', methods = ['GET'])
 def api_all():
     
     Age = int(request.args['Age'])
@@ -42,6 +42,8 @@ def api_all():
     
     #return(jsonify(drug))
     return(jsonify(recommended_drug = drug))
+
+    return render_template("index.html")
 
 if __name__ == '__main__':
     app.run()
