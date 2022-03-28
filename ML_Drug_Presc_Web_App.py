@@ -25,25 +25,23 @@ def predict_drug(Age,Sex,BP,Cholesterol,Na_to_K):
     #4 Return the "raw" version of the prediction i.e the actual name of the drug rather than the numerical encoded version
     return drug_map[y_predict]
 
-@app.route("/")
-def hello():
-    return "A test web service for accessing a machine learning model to make drug reccommendations v2."
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-@app.route('/drug', methods = ['GET'])
-def api_all():
+@app.route('/drug', methods = ['POST', 'GET'])
+def prescribe():
     
-    Age = int(request.args['Age'])
-    Sex = request.args['Sex']
-    BP = request.args['BP']
-    Cholesterol = request.args['Cholesterol']
-    Na_to_K = float(request.args['Na_to_K'])
+    Age = int(request.form['age_input'])
+    Sex = request.form['sex_input']
+    BP = request.form['bp_input']
+    Cholesterol = request.form['cholesterol_input']
+    Na_to_K = float(request.form['na_to_k_input'])
     
     drug = predict_drug(Age,Sex,BP,Cholesterol,Na_to_K)
     
-    #return(jsonify(drug))
     return(jsonify(recommended_drug = drug))
-
-    return render_template("index.html")
+    #return render_template('index.html')
 
 if __name__ == '__main__':
     app.run()

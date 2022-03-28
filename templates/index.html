@@ -1,6 +1,32 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Mar 28 12:09:18 2022
-
-@author: delva
-"""
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <title> Drug Prescription Web App</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+    </head>
+    <body>
+        <img src="https://raw.githubusercontent.com/jdelva2/ml-drug-prescription-app/main/images/medical_tech_image.jpg">
+        <br>
+        <form action="drug" method="post">
+            <p>Please enter your Age(1-100)</p>
+            <input type="number" name="age_input">
+            <br>
+            <p>Please enter your sex (M, F)</p>
+            <input type="text" name="sex_input">
+            <br>
+            <p>Please enter your Blood Pressure( LOW, HIGH, NORMAL)</p>
+            <input type="text" name="bp_input">
+            <br>
+            <p>Please enter your Cholesterol level (LOW, HIGH, NORMAL)</p>
+            <input type="text" name="cholesterol_input">
+            <br>
+            <p>Please enter your NA_to_K (1-100)</p>
+            <input type="number" name="na_to_k_input">
+            <br>
+           
+            <input type="submit" value="Prescribe" id="prescribe">
+            <br>
+        </form>
+    </body>
+</html>
