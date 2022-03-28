@@ -8,9 +8,9 @@
     <body>
         <img src="https://raw.githubusercontent.com/jdelva2/ml-drug-prescription-app/main/images/medical_tech_image.jpg">
         <br>
-        <form action="drug" method="post">
+        <form action="/drug" method="post">
             <p>Please enter your Age(1-100)</p>
-            <input type="number" name="age_input">
+            <input type="text" name="age_input">
             <br>
             <p>Please enter your sex (M, F)</p>
             <input type="text" name="sex_input">
@@ -22,11 +22,14 @@
             <input type="text" name="cholesterol_input">
             <br>
             <p>Please enter your NA_to_K (1-100)</p>
-            <input type="number" name="na_to_k_input">
+            <input type="text" name="na_to_k_input">
             <br>
            
             <input type="submit" value="Prescribe" id="prescribe">
             <br>
         </form>
+        <br>
+        <br>
+        {{ prediction_text }}
     </body>
 </html>

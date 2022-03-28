@@ -40,8 +40,7 @@ def prescribe():
     
     drug = predict_drug(Age,Sex,BP,Cholesterol,Na_to_K)
     
-    return(jsonify(recommended_drug = drug))
-    #return render_template('index.html')
+    return render_template('index.html', prediction_text='Recommended Drug: ${}'.format(drug))
 
 if __name__ == '__main__':
     app.run()
