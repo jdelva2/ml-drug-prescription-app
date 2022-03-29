@@ -25,7 +25,7 @@ def predict_drug(Age,Sex,BP,Cholesterol,Na_to_K):
     #4 Return the "raw" version of the prediction i.e the actual name of the drug rather than the numerical encoded version
     return drug_map[y_predict]
 
-@app.route('/')
+@app.route('/', methods = ['GET'])
 def index():
     return render_template('index.html')
 
@@ -40,7 +40,7 @@ def prescribe():
     
     drug = predict_drug(Age,Sex,BP,Cholesterol,Na_to_K)
     
-    return render_template('index.html', prediction_text='Recommended Drug: ${}'.format(drug))
+    return render_template('index.html', prediction_text='Recommended Drug: {}'.format(drug))
 
 if __name__ == '__main__':
     app.run()
