@@ -3,6 +3,9 @@ from flask import Flask
 import pickle
 from flask import request, jsonify,render_template,flash
 
+import warnings
+warnings.filterwarnings('ignore')
+
 app =Flask(__name__)
 
 gender_map = {"F": 0, "M": 1}
