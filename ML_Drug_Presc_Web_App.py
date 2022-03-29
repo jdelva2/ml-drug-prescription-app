@@ -1,10 +1,8 @@
 from flask import Flask
 
 import pickle
-from flask import request, jsonify,render_template,flash
+from flask import request,render_template, jsonify
 
-import warnings
-warnings.filterwarnings('ignore')
 
 app =Flask(__name__)
 
@@ -28,11 +26,11 @@ def predict_drug(Age,Sex,BP,Cholesterol,Na_to_K):
     #4 Return the "raw" version of the prediction i.e the actual name of the drug rather than the numerical encoded version
     return drug_map[y_predict]
 
-@app.route('/', methods = ['GET'])
+@app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/drug', methods = ['POST', 'GET'])
+@app.route('/prescribe', methods=['POST'])
 def prescribe():
     
     Age = int(request.form['age_input'])
@@ -46,4 +44,4 @@ def prescribe():
     return render_template('index.html', prediction_text='Recommended Drug: {}'.format(drug))
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
