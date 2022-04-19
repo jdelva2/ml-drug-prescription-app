@@ -37,9 +37,9 @@ def index():
 def prescribe():
     
     Age = int(request.form['age_input'])
-    Sex = request.form['sex_input']
-    BP = request.form['bp_input']
-    Cholesterol = request.form['cholesterol_input']
+    Sex = request.form['sex_input'].upper()
+    BP = request.form['bp_input'].upper()
+    Cholesterol = request.form['cholesterol_input'].upper()
     Na_to_K = float(request.form['na_to_k_input'])
     
     drug = predict_drug(Age,Sex,BP,Cholesterol,Na_to_K)
