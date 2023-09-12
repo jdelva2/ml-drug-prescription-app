@@ -3,8 +3,8 @@ from flask import Flask
 import pickle
 from flask import request,render_template, jsonify
 
-#import warnings 
-#warnings.filterwarnings("ignore")
+import warnings 
+warnings.filterwarnings("ignore")
 
 
 app =Flask(__name__)
